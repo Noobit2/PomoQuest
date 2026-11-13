@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PomoQuest</title>
+<link rel="stylesheet" href="PomoCss/PomoStyle.css">
+</head>
+<body data-mode="focus">
+
+<div id="auth">
+  <form id="authForm">
+    <h1>PomoQuest</h1>
+    <p class="hint" id="authHint">Log in to open your study dashboard.</p>
+    <input id="user" placeholder="Username" autocomplete="username" required>
+    <input id="pass" type="password" placeholder="Password" autocomplete="current-password" required minlength="4">
+    <div class="err" id="authErr"></div>
+    <button class="primary" id="authBtn">Log in</button>
+    <button type="button" class="link" id="authSwap">No account? Sign up</button>
+  </form>
+</div>
+
+ 
+
+<div id="app" class="hidden">
+  <header>
+    <div><strong id="who"></strong> &nbsp;<small id="rank"></small></div>
+    <div class="lvl"><span id="lvlTxt">Lv 1</span><div class="bar"><i id="xpBar"></i></div><small id="xpTxt"></small></div>
+    <button id="logout">Log out</button>
+  </header>
+
+  <nav id="nav" aria-label="Main">
+  <button data-view="timer" class="on">Timer</button>
+  <button data-view="music">Music</button>
+  <button data-view="subjects">Subjects</button>
+  <button data-view="themes">Themes</button>
+  <span id="navTime">45:00</span>
+</nav>
+
+<div id="xpCard" aria-live="polite">
+  <div class="xp-top">
+    <div><strong id="xpLevel">Level 1</strong> <small id="xpRank">Novice Scholar</small></div>
+    <span id="xpNumbers">0 / 100 XP</span>
+  </div>
+  <div class="xp-track"><div class="xp-fill" id="xpFill"></div></div>
+  <small id="xpNext">Next theme: Spring at Level 5</small>
+</div>
+
+  <main>
+
+   
+  <main>
+
+  <section data-page="timer">
+    <h2>Focus timer</h2>
+    <div class="mode" id="modeTxt">Focus session: 45 minutes</div>
+    <div class="time" id="time">45:00</div>
+    <div class="row">
+      <button class="primary" id="startBtn">Start</button>
+      <button id="resetBtn">Reset</button>
+      <button id="skipBtn">Skip to break</button>
+    </div>
+    <p class="hint" style="text-align:center">Finish a full 45-minute session to earn +100 XP. A 10-minute break follows automatically.</p>
+  </section>
+
+  <section data-page="music">
+    <h2>Music</h2>
+    <input id="spUrl" placeholder="Paste a Spotify track, album or playlist link">
+    <div class="row" style="justify-content:flex-start"><button class="primary" id="spLoad">Load player</button></div>
+    <div id="spBox" style="margin-top:.8rem"></div>
+    <p class="hint">Full songs play when you are logged in to Spotify in this browser. Without it, Spotify only allows 30-second previews.</p>
+  </section>
+
+  <section data-page="themes">
+    <h2>Themes</h2>
+    <p class="hint">A new theme unlocks every 5 levels.</p>
+    <div class="themes" id="themes"></div>
+  </section>
+
+  <section class="wide" data-page="subjects">
+    <h2>Subjects and files</h2>
+    <form id="subForm" class="row" style="justify-content:flex-start">
+      <input id="subName" placeholder="Add a subject, e.g. IT-314 WebSys" style="max-width:340px" required>
+      <button class="primary">Add subject</button>
+    </form>
+    <div class="subs" id="subs"></div>
+    <div id="subPanel" class="hidden">
+      <div class="row" style="justify-content:flex-start;align-items:center">
+        <h3 id="subTitle" style="margin:0"></h3>
+        <label><input type="file" id="fileIn" multiple hidden><button type="button" onclick="fileIn.click()">Upload files</button></label>
+        <button id="delSub">Delete subject</button>
+      </div>
+      <ul class="files" id="files"></ul>
+      <div id="viewer"></div>
+    </div>
+    <p class="hint" id="subEmpty">Add your first subject to start uploading notes, slides and PDFs.</p>
+  </section>
+
+</main>
+
+<script src="PomoQuestJava/Config.js"></script>
+<script src="PomoQuestJava/Storage.js"></script>
+<script src="PomoQuestJava/auth.js"></script>
+<script src="PomoQuestJava/Levels.js"></script>
+<script src="PomoQuestJava/Timer.js"></script>
+<script src="PomoQuestJava/Music.js"></script>
+<script src="PomoQuestJava/Subjects.js"></script>
+<script src="PomoQuestJava/navi.js"></script>
+<script src="PomoQuestJava/xpbar.js"></script>
+<script src="PomoQuestJava/main.js"></script>
+</body>
+</html>
